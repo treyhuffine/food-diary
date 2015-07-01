@@ -37,7 +37,7 @@ app.controller("DiaryCtlr", function($scope, $http) {
   };
   $scope.weightGained = function() {
     if ($scope.currentUser) {
-      var weightGain = calsPerPound * $scope.caloriesToWeight;
+      var weightGain = $scope.caloriesToWeight() / calsPerPound;
       return weightGain;
     }
     else {
@@ -46,8 +46,16 @@ app.controller("DiaryCtlr", function($scope, $http) {
   };
   $scope.caloriesToWeight = function() {
     var totalCals = $scope.foodList.reduce(function(prev, curr) {
-      return prev + curr.calories * curr.servings;
-    });
-    console.log(totalCals);
+      return Number(prev) + Number(curr.calories) * Number(curr.servings);
+    }, 0);
+    return totalCals;
+  };
+  $scope.currentWeight = function() {
+    if ($scope.currentUser) {
+      return Number($scope.currentUser.weight) + Number($scope.weightGained());
+    }
+    else {
+      return "";
+    }
   };
 });

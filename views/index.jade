@@ -57,8 +57,8 @@ block content
           tr
             td {{calcBMI() | number:2}}
             td {{currentUser.weight | number:0}}
-            td some var
-            td some var
+            td {{weightGained() | number:2}}
+            td {{currentWeight() | number:2}}
       img(ng-src="http://www.helioscopie.fr/sites/default/files/calculimcENG.jpg" class="img-responsive bmi-sheet")
   .row
     .col-sm-12
