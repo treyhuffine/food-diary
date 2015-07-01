@@ -31,19 +31,20 @@ block content
       h3.section-title Food
       form
         label.label-spacer Desciption
-        input.form-control(placeholder="Food name" required)
+        input.form-control(placeholder="Food name" ng-model="food.name" required)
         label.label-spacer Meal
-        select.form-control
+        select.form-control(ng-model="food.category")
           option Breakfast
           option Lunch
           option Dinner
           option Snack
           option Fourth Meal
         label.label-spacer Calories
-        input.form-control(placeholder="Calories" required)
+        input.form-control(placeholder="Calories" ng-model="food.calories" type="number" required)
         label.label-spacer Servings
-        input.form-control(placeholder="Servings" required)
+        input.form-control(placeholder="Servings" ng-model="food.servings" type="number" required)
         button.btn.btn-primary.food-button Save Food
+        {{food}}
     .col-sm-6.stats-container
       h2 Current User: {{currentUser.name || "none"}}
       table.table-striped.stats-table
