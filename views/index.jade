@@ -73,11 +73,11 @@ block content
               th.food-head Servings
               th.food-head Date
           tbody
-            tr(ng-repeat="food in foodList")
+            tr.food-item(ng-repeat="food in foodList track by $index")
               td
-                button.btn.btn-info.btn-sm Edit
+                button.btn.btn-info.btn-xs(ng-click="editFood($index)") Edit
               td
-                button.btn.btn-danger.btn-sm Delete
+                button.btn.btn-danger.btn-xs(ng-click="deleteFood($index)") Delete
               td {{food.description}}
               td {{food.meal}}
               td {{food.calories}}

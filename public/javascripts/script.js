@@ -14,4 +14,7 @@ app.controller("DiaryCtlr", function($scope, $http) {
     $scope.foodList.push($scope.food);
     $scope.food = {};
   };
+  $scope.deleteFood = function(idx) {
+    $scope.foodList.splice(idx,1);
+  };
 });

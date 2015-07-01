@@ -55,3 +55,7 @@ a {
   margin-top: 20px;
   margin-bottom: 20px;
 }
+.food-item td {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
