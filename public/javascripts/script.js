@@ -11,19 +11,44 @@ app.controller("DiaryCtlr", function($scope, $http) {
     $scope.userList.push($scope.user);
   };
   $scope.addFood = function() {
-    $scope.food.date = new Date();
-    $scope.food.editing = false;
-    $scope.foodList.push($scope.food);
-    $scope.food = {};
+    $http.get("/food")
+      .success(function(data) {
+        console.log(data);
+        $scope.food.date = new Date();
+        $scope.food.editing = false;
+        $scope.foodList.push($scope.food);
+        $scope.food = {};
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
   };
   $scope.deleteFood = function(idx) {
-    $scope.foodList.splice(idx,1);
+    $http.delete("/food/" + idx)
+      .success(function(data) {
+        $scope.foodList.splice(idx,1);
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
   };
   $scope.editFood = function(idx) {
-    $scope.foodList[idx].editing = true;
+    $http.put("/food/" + idx)
+      .success(function(data) {
+        $scope.foodList[idx].editing = true;
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
   };
   $scope.saveFood = function(idx) {
-    $scope.foodList[idx].editing = false;
+    $http.post("/food")
+    .success(function(data) {
+      $scope.foodList[idx].editing = false;
+    })
+    .catch(function(data) {
+      console.log(err);
+    });
   };
   $scope.calcBMI = function() {
     if ($scope.currentUser) {
