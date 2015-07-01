@@ -9,7 +9,6 @@ app.controller("DiaryCtlr", function($scope, $http) {
   $scope.saveUser = function() {
     $scope.currentUser = $scope.user;
     $scope.userList.push($scope.user);
-    console.log($scope.currentUser = $scope.user);
   };
   $scope.addFood = function() {
     $scope.food.date = new Date();
