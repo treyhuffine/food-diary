@@ -19,7 +19,7 @@ a {
   padding-left: 10px;
   padding-right: 10px;
 }
-td {
+.stats-table td {
   text-align: center;
 }
 #personal-data, #user-measurables, #new-food {
@@ -41,4 +41,11 @@ td {
 }
 .food-button {
   margin-top: 10px;
+}
+.food-table {
+  width: 100%;
+}
+.food-container {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
