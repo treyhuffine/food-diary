@@ -1,5 +1,43 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  .row
+    .pull-right.stats-container
+      h3.stats Statistics
+      table.table-striped.stats-table
+        thead
+          tr
+            th.stats-head BMI
+            th.stats-head Old Weight
+            th.stats-head Weight Gained
+            th.stats-head Current Weight
+        tbody
+          tr
+            td some var
+            td some var
+            td some var
+            td some var
+  .row
+    h1.diary-tag Food Diary
+    buttn.btn.btn-warning Show User
+  .row
+    h3 User
+    form
+      .col-sm-6#personal-data
+        label.label-spacer Name
+        input.form-control(placeholder="Name")
+        label.label-spacer Age
+        input.form-control(placeholder="Age")
+        label.label-spacer Gender
+        select.form-control
+          option Male
+          option Female
+      .col-sm-6#user-measurables
+        label.label-spacer Weight
+        input.form-control(placeholder="Weight in Pounds")
+        label.label-spacer Height
+        input.form-control(placeholder="Height in Inches")
+        label.label-spacer Unit
+        select.form-control
+          option in
+          option cm

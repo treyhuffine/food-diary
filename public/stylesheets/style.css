@@ -1,8 +1,30 @@
 body {
-  padding: 50px;
+  padding-left: 40px;
+  padding-right: 40px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
-
 a {
   color: #00B7FF;
+}
+.stats-container {
+  margin-right: 60px;
+}
+.stats-table {
+  clear: both;
+}
+.stats {
+  text-align: center;
+}
+.stats-head {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+td {
+  text-align: center;
+}
+.personal-data, .user-measurables {
+  padding-left: 0;
+}
+.label-spacer {
+  margin-top: 15px;
 }
