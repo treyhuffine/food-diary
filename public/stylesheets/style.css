@@ -29,7 +29,7 @@ a {
   padding-left: 0;
 }
 #new-food {
-  border-right: 1px solid rgb(227, 227, 227)
+  border-right: 1px solid rgb(227, 227, 227);
 }
 .label-spacer {
   margin-top: 15px;
@@ -58,4 +58,8 @@ a {
 .food-item td {
   padding-top: 5px;
   padding-bottom: 5px;
+}
+.food-list {
+  margin-top: 7px;
+  margin-bottom: 10px;
 }

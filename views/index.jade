@@ -3,7 +3,7 @@ extends layout
 block content
   .row
     h1.diary-tag Food Diary
-    buttn.btn.btn-warning(ng-click="showUser = showUser ? false : true") Show User
+    buttn.btn.btn-warning(ng-click="showUser = !showUser") Show User
   .row#new-user-container(ng-show="showUser")
     h3.section-title User
     form
@@ -26,7 +26,7 @@ block content
           option in
           option cm
       button.save-user.btn.btn-success(type="Submit") Save user
-  .row
+  .row.food-list
     .col-sm-6#new-food
       h3.section-title Food
       form(ng-submit="addFood()")
@@ -75,11 +75,22 @@ block content
           tbody
             tr.food-item(ng-repeat="food in foodList track by $index")
               td
-                button.btn.btn-info.btn-xs(ng-click="editFood($index)") Edit
+                button.btn.btn-info.btn-xs(ng-click="editFood($index)" ng-hide="food.editing") Edit
+                button.btn.btn-success.btn-xs(ng-click="saveFood($index)" ng-show="food.editing") Save
               td
                 button.btn.btn-danger.btn-xs(ng-click="deleteFood($index)") Delete
-              td {{food.description}}
-              td {{food.meal}}
-              td {{food.calories}}
-              td {{food.servings}}
-              td {{food.date | date : 'mediumDate' }}
+              td
+                p(ng-hide="food.editing") {{food.description}}
+                input(ng-model="food.description" ng-show="food.editing")
+              td
+                p(ng-hide="food.editing") {{food.meal}}
+                input(ng-model="food.meal" ng-show="food.editing")
+              td
+                p(ng-hide="food.editing") {{food.calories}}
+                input(ng-model="food.calories" ng-show="food.editing")
+              td
+                p(ng-hide="food.editing") {{food.servings}}
+                input(ng-model="food.servings" ng-show="food.editing")
+              td
+                p(ng-hide="food.editing") {{food.date | date : 'mediumDate' }}
+                input(ng-model="food.description" ng-show="food.editing")
