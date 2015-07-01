@@ -2,8 +2,50 @@ extends layout
 
 block content
   .row
-    .pull-right.stats-container
-      h3.stats Statistics
+    h1.diary-tag Food Diary
+    buttn.btn.btn-warning(ng-click="showUser = showUser ? false : true") Show User
+  .row#new-user-container(ng-show="showUser")
+    h3.section-title User
+    form
+      .col-sm-6#personal-data
+        label.label-spacer Name
+        input.form-control(placeholder="Name" ng-model="user.name" required)
+        label.label-spacer Age
+        input.form-control(placeholder="Age" ng-model="user.age" type="number" required)
+        label.label-spacer Gender
+        select.form-control(ng-model="user.gender" required)
+          option Male
+          option Female
+      .col-sm-6#user-measurables
+        label.label-spacer Weight
+        input.form-control(placeholder="Weight in Pounds" ng-model="user.weight" type="number" required)
+        label.label-spacer Height
+        input.form-control(placeholder="Height in Inches" ng-model="user.height" type="number" required)
+        label.label-spacer Unit
+        select.form-control(ng-model="user.unit" required)
+          option in
+          option cm
+      button.save-user.btn.btn-success(type="Submit") Save user
+  .row
+    .col-sm-6#new-food
+      h3.section-title Food
+      form
+        label.label-spacer Desciption
+        input.form-control(placeholder="Food name" required)
+        label.label-spacer Meal
+        select.form-control
+          option Breakfast
+          option Lunch
+          option Dinner
+          option Snack
+          option Fourth Meal
+        label.label-spacer Calories
+        input.form-control(placeholder="Calories" required)
+        label.label-spacer Servings
+        input.form-control(placeholder="Servings" required)
+        button.btn.btn-primary.food-button Save Food
+    .col-sm-6.stats-container
+      h2 Current User: {{currentUser.name || "none"}}
       table.table-striped.stats-table
         thead
           tr
@@ -17,49 +59,6 @@ block content
             td some var
             td some var
             td some var
-  .row
-    h1.diary-tag Food Diary
-    buttn.btn.btn-warning Show User
-  .row#new-user-container
-    h3.section-title User
-    form
-      .col-sm-6#personal-data
-        label.label-spacer Name
-        input.form-control(placeholder="Name")
-        label.label-spacer Age
-        input.form-control(placeholder="Age")
-        label.label-spacer Gender
-        select.form-control
-          option Male
-          option Female
-      .col-sm-6#user-measurables
-        label.label-spacer Weight
-        input.form-control(placeholder="Weight in Pounds")
-        label.label-spacer Height
-        input.form-control(placeholder="Height in Inches")
-        label.label-spacer Unit
-        select.form-control
-          option in
-          option cm
-    button.save-user.btn.btn-success(type="Submit") Save user
-  .row
-    .col-sm-6#new-food
-      h3.section-title Food
-      form
-        label.label-spacer Desciption
-        input.form-control(placeholder="Food name")
-        label.label-spacer Meal
-        select.form-control
-          option Breakfast
-          option Lunch
-          option Dinner
-          option Snack
-          option Fourth Meal
-        label.label-spacer Calories
-        input.form-control(placeholder="Calories")
-        label.label-spacer Servings
-        input.form-control(placeholder="Servings")
-        button.btn.btn-primary.food-button Save Food
   .row
     .col-sm-12
       .food-container

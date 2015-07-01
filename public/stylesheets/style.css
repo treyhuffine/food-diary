@@ -6,24 +6,30 @@ body {
 a {
   color: #00B7FF;
 }
-.stats-container {
+/* .stats-container {
   margin-right: 60px;
+} */
+.diary-tag {
+  text-align: center
 }
 .stats-table {
   clear: both;
-}
-.stats {
-  text-align: center;
 }
 .stats-head {
   padding-left: 10px;
   padding-right: 10px;
 }
-.stats-table td {
+.stats-table{
+  width: 100%;
+}
+.stats-table td, .stats-table th {
   text-align: center;
 }
 #personal-data, #user-measurables, #new-food {
   padding-left: 0;
+}
+#new-food {
+  border-right: 1px solid rgb(227, 227, 227)
 }
 .label-spacer {
   margin-top: 15px;
