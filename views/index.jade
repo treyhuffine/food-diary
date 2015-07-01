@@ -55,8 +55,8 @@ block content
             th.stats-head Current Weight
         tbody
           tr
-            td var
-            td{{currentUser.weight}}
+            td {{calcBMI()}}
+            td {{currentUser.weight}}
             td some var
             td some var
       img(ng-src="http://www.helioscopie.fr/sites/default/files/calculimcENG.jpg" class="img-responsive bmi-sheet")
