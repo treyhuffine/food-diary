@@ -9,6 +9,7 @@ app.controller("DiaryCtlr", function($scope, $http) {
   $scope.saveUser = function() {
     $scope.currentUser = $scope.user;
     $scope.userList.push($scope.user);
+    console.log($scope.currentUser = $scope.user);
   };
   $scope.addFood = function() {
     $scope.food.date = new Date();
@@ -36,14 +37,17 @@ app.controller("DiaryCtlr", function($scope, $http) {
   };
   $scope.weightGained = function() {
     if ($scope.currentUser) {
-      var calsPerPound * $scope.currentUser.;
-      return BMI;
+      var weightGain = calsPerPound * $scope.caloriesToWeight;
+      return weightGain;
     }
     else {
       return "";
     }
   };
   $scope.caloriesToWeight = function() {
-    $scope.foodList.forEach(f: fn(elt: ?, i: number), context?: ?)
-  }
+    var totalCals = $scope.foodList.reduce(function(prev, curr) {
+      return prev + curr.calories * curr.servings;
+    });
+    console.log(totalCals);
+  };
 });

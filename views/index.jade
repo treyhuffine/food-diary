@@ -6,7 +6,7 @@ block content
     buttn.btn.btn-warning(ng-click="showUser = !showUser") Show User
   .row#new-user-container(ng-show="showUser")
     h3.section-title User
-    form
+    form(ng-submit="saveUser()")
       .col-sm-6#personal-data
         label.label-spacer Name
         input.form-control(placeholder="Name" ng-model="user.name" required)
@@ -55,8 +55,8 @@ block content
             th.stats-head Current Weight
         tbody
           tr
-            td {{calcBMI()}}
-            td {{currentUser.weight}}
+            td {{calcBMI() | number:2}}
+            td {{currentUser.weight | number:0}}
             td some var
             td some var
       img(ng-src="http://www.helioscopie.fr/sites/default/files/calculimcENG.jpg" class="img-responsive bmi-sheet")
