@@ -4,6 +4,7 @@ app.controller("DiaryCtlr", function($scope, $http) {
   $scope.userList = [];
   $scope.foodList =[];
   $scope.user = {};
+  $calsPerPound = 3500;
 
   $scope.saveUser = function() {
     $scope.currentUser = $scope.user;

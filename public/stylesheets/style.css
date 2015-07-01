@@ -28,8 +28,8 @@ a {
 #personal-data, #user-measurables, #new-food {
   padding-left: 0;
 }
-#new-food {
-  border-right: 1px solid rgb(227, 227, 227);
+.stats-container {
+  border-left: 1px solid rgb(227, 227, 227);
 }
 .label-spacer {
   margin-top: 15px;
@@ -62,4 +62,7 @@ a {
 .food-list {
   margin-top: 7px;
   margin-bottom: 10px;
+}
+.bmi-sheet {
+  padding-bottom: 15px;
 }
