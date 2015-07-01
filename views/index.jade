@@ -29,22 +29,21 @@ block content
   .row
     .col-sm-6#new-food
       h3.section-title Food
-      form
+      form(ng-submit="addFood()")
         label.label-spacer Desciption
-        input.form-control(placeholder="Food name" ng-model="food.name" required)
+        input.form-control(placeholder="Food name" ng-model="food.description" maxlength="20" required)
         label.label-spacer Meal
-        select.form-control(ng-model="food.category")
+        select.form-control(ng-model="food.meal" required)
           option Breakfast
           option Lunch
           option Dinner
           option Snack
           option Fourth Meal
         label.label-spacer Calories
-        input.form-control(placeholder="Calories" ng-model="food.calories" type="number" required)
+        input.form-control(placeholder="Calories" ng-model="food.calories" type="number" min="0" required)
         label.label-spacer Servings
-        input.form-control(placeholder="Servings" ng-model="food.servings" type="number" required)
-        button.btn.btn-primary.food-button Save Food
-        {{food}}
+        input.form-control(placeholder="Servings" ng-model="food.servings" type="number" min="1" required)
+        button.btn.btn-primary.food-button(type="submit") Save Food
     .col-sm-6.stats-container
       h2 Current User: {{currentUser.name || "none"}}
       table.table-striped.stats-table
@@ -62,7 +61,7 @@ block content
             td some var
   .row
     .col-sm-12
-      .food-container
+      .food-container(ng-show="foodList.length > 0")
         table.table-striped.food-table
           thead
             tr
@@ -74,11 +73,13 @@ block content
               th.food-head Servings
               th.food-head Date
           tbody
-            tr
-              td some var
-              td some var
-              td some var
-              td some var
-              td some var
-              td some var
-              td some var
+            tr(ng-repeat="food in foodList")
+              td
+                button.btn.btn-info.btn-sm Edit
+              td
+                button.btn.btn-danger.btn-sm Delete
+              td {{food.description}}
+              td {{food.meal}}
+              td {{food.calories}}
+              td {{food.servings}}
+              td {{food.date | date : yyyy-M-d }}
