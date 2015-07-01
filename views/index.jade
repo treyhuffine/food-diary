@@ -20,8 +20,8 @@ block content
   .row
     h1.diary-tag Food Diary
     buttn.btn.btn-warning Show User
-  .row
-    h3 User
+  .row#new-user-container
+    h3.section-title User
     form
       .col-sm-6#personal-data
         label.label-spacer Name
@@ -41,3 +41,22 @@ block content
         select.form-control
           option in
           option cm
+    button.save-user.btn.btn-success(type="Submit") Save user
+  .row
+    .col-sm-6#new-food
+      h3.section-title Food
+      form
+        label.label-spacer Desciption
+        input.form-control(placeholder="Food name")
+        label.label-spacer Meal
+        select.form-control
+          option Breakfast
+          option Lunch
+          option Dinner
+          option Snack
+          option Fourth Meal
+        label.label-spacer Calories
+        input.form-control(placeholder="Calories")
+        label.label-spacer Servings
+        input.form-control(placeholder="Servings")
+        button.btn.btn-primary.food-button Save Food
