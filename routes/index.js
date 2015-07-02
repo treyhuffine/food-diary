@@ -27,9 +27,10 @@ router.get('/users', function(req, res) {
   });
 });
 router.get("/food", function(req, res) {
-  res.status(200).json({message: "API successfully hit"});
+  console.log(req.body);
 });
 router.post("/food/", function(req, res) {
+  console.log(req);
   res.status(200).json({message: "API successfully hit"});
 });
 router.delete("/food/:id", function(req, res) {

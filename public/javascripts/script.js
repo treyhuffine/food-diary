@@ -9,14 +9,16 @@ app.controller("DiaryCtlr", function($scope, $http, FoodCalculator) {
   $scope.saveUser = function() {
     $http.post("/users", $scope.user)
       .success(function(data, status, headers, config) {
-        $scope.currentUser = $scope.user;
-        $scope.userList.push($scope.user);
+        console.log(data);
+        $scope.currentUser = data;
+        $scope.userList.push($scope.currentUser);
+        $scope.getFood();
       })
       .catch(function(err) {
         console.log(err);
       });
   };
-  $scope.addFood = function() {
+  $scope.getFood = function() {
     $http.get("/food", $scope.currentUser)
       .success(function(data) {
         console.log(data);
@@ -47,14 +49,17 @@ app.controller("DiaryCtlr", function($scope, $http, FoodCalculator) {
         console.log(err);
       });
   };
-  $scope.saveFood = function(idx) {
-    $http.post("/food")
-    .success(function(data) {
-      $scope.foodList[idx].editing = false;
-    })
-    .catch(function(data) {
-      console.log(err);
-    });
+  $scope.addFood = function() {
+    $scope.food.uid = $scope.currentUser.uid;
+    $scope.food.editing = false;
+    $scope.food.date = new Date();
+    $http.post("/food", $scope.food)
+      .success(function(data) {
+        console.log(data);
+      })
+      .catch(function(data) {
+        console.log(err);
+      });
   };
   $scope.calcBMI = function() {
     return ($scope.currentUser ? FoodCalculator.calcBMI($scope.currentUser) : "");
