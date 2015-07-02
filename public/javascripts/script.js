@@ -7,8 +7,14 @@ app.controller("DiaryCtlr", function($scope, $http, FoodCalculator) {
   var calsPerPound = 3500;
 
   $scope.saveUser = function() {
-    $scope.currentUser = $scope.user;
-    $scope.userList.push($scope.user);
+    $http.post("/users", $scope.user)
+      .success(function(data, status, headers, config) {
+        $scope.currentUser = $scope.user;
+        $scope.userList.push($scope.user);
+      })
+      .catch(function(err) {
+        console.log(error);
+      });
   };
   $scope.addFood = function() {
     $http.get("/food")
