@@ -23,7 +23,7 @@ router.get('/users', function(req, res) {
   fbRef.once("value", function(snapshot) {
     res.json(snapshot.val());
   }, function(err) {
-    res.json(error);
+    res.json(err);
   });
 });
 router.get("/food", function(req, res) {
@@ -32,8 +32,16 @@ router.get("/food", function(req, res) {
   });
 });
 router.post("/food", function(req, res) {
-  console.log(req.body);
-  res.status(200).json({message: "API successfully hit"});
+  fbRef.child(req.body.uid).child("food").push(req.body, function(err) {
+    if (err) {
+      res.status(400);
+    }
+    fbRef.child(req.body.uid).child("food").limitToLast(1).on("child_added", function(snapshot) {
+      var newFood = snapshot.val();
+      newFood.foodId = snapshot.key();
+      res.json(snapshot.val());
+    });
+  });
 });
 router.delete("/food/:id", function(req, res) {
   res.status(200).json({message: "API successfully hit"});
