@@ -11,6 +11,7 @@ router.post('/users', function(req, res) {
   fbRef.push(req.body, function(err) {
     if (err) {
       res.status(400);
+      return;
     }
   });
   fbRef.limitToLast(1).on("child_added", function(snapshot) {
@@ -35,16 +36,23 @@ router.post("/food", function(req, res) {
   fbRef.child(req.body.uid).child("food").push(req.body, function(err) {
     if (err) {
       res.status(400);
+      return;
     }
     fbRef.child(req.body.uid).child("food").limitToLast(1).on("child_added", function(snapshot) {
       var newFood = snapshot.val();
       newFood.foodId = snapshot.key();
-      res.json(snapshot.val());
+      res.json(newFood);
     });
   });
 });
-router.delete("/food/:id", function(req, res) {
-  res.status(200).json({message: "API successfully hit"});
+router.delete("/food/:user/:food", function(req, res) {
+  fbRef.child(req.params.user).child(req.params.food).remove(function(err) {
+    if (err) {
+      res.status(404);
+      return;
+    }
+    res.status(200).json({message: "API successfully hit"});
+  });
 });
 router.put("/food/:id", function(req, res) {
   res.status(200).json({message: "API successfully hit"});

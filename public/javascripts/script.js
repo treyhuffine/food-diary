@@ -25,8 +25,9 @@ app.controller("DiaryCtlr", function($scope, $http, FoodCalculator) {
         console.log(error);
       });
   };
-  $scope.deleteFood = function(idx) {
-    $http.delete("/food/" + idx)
+  $scope.deleteFood = function(food, idx) {
+    console.log(food);
+    $http.delete("/food/" + food.uid + "/" + food.foodId)
       .success(function(data) {
         $scope.foodList.splice(idx,1);
       })
@@ -51,6 +52,7 @@ app.controller("DiaryCtlr", function($scope, $http, FoodCalculator) {
       .success(function(data) {
         if (data) {
           $scope.foodList.push(data);
+          $scope.food = {};
         }
       })
       .catch(function(err) {

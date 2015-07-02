@@ -8,7 +8,7 @@ block content
     h3.section-title User
     select(value="Select user")
       option(selected="selected") Select a current user
-    form(ng-submit="saveUser()")
+    form
       .col-sm-6#personal-data
         label.label-spacer Name
         input.form-control(placeholder="Name" ng-model="user.name" required)
@@ -28,12 +28,12 @@ block content
           option in
           option cm
       div.btn-container
-        button.save-user.btn.btn-success(type="Submit") Save user
+        button.save-user.btn.btn-success(type="Submit" ng-click="saveUser()") Save user
         span.loggedin-user(ng-show="currentUser") Logged In
   .row.food-list
     .col-sm-6#new-food
       h3.section-title Food
-      form(ng-submit="addFood()")
+      form
         label.label-spacer Desciption
         input.form-control(placeholder="Food name" ng-model="food.description" maxlength="20" required)
         label.label-spacer Meal
@@ -48,7 +48,7 @@ block content
         label.label-spacer Servings
         input.form-control(placeholder="Servings" ng-model="food.servings" type="number" min="1" required)
         div.btn-container
-          button.btn.btn-primary.food-button(type="submit" ng-disabled="!currentUser") Save Food
+          button.btn.btn-primary.food-button(type="submit" ng-disabled="!currentUser" ng-click="addFood()") Save Food
           span.disabled-user(ng-hide="currentUser") Create a user first
     .col-sm-6.stats-container
       h2 Current User: {{currentUser.name || "none"}}
@@ -85,7 +85,7 @@ block content
                 button.btn.btn-info.btn-xs(ng-click="editFood($index)" ng-hide="food.editing") Edit
                 button.btn.btn-success.btn-xs(ng-click="saveFood($index)" ng-show="food.editing") Save
               td
-                button.btn.btn-danger.btn-xs(ng-click="deleteFood($index)") Delete
+                button.btn.btn-danger.btn-xs(ng-click="deleteFood(food, $index)") Delete
               td
                 p.fooditem(ng-hide="food.editing") {{food.description}}
                 input(ng-model="food.description" ng-show="food.editing")
