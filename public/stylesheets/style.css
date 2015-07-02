@@ -47,9 +47,6 @@ a {
   padding-bottom: 10px;
   margin-top: 10px;
 }
-.food-button {
-  margin-top: 10px;
-}
 .food-table {
   width: 100%;
 }
@@ -67,4 +64,12 @@ a {
 }
 .bmi-sheet {
   padding-bottom: 15px;
+}
+.btn-container {
+  margin-top: 10px;
+}
+.disabled-user {
+  color: rgb(204, 130, 130);
+  margin-left: 10px;
+  display: inline-block;
 }
