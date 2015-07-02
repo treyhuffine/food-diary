@@ -51,27 +51,12 @@ app.controller("DiaryCtlr", function($scope, $http, FoodCalculator) {
     });
   };
   $scope.calcBMI = function() {
-    if ($scope.currentUser) {
-      return FoodCalculator.calcBMI($scope.currentUser);
-    }
-    else {
-      return "";
-    }
+    return ($scope.currentUser ? FoodCalculator.calcBMI($scope.currentUser) : "");
   };
   $scope.weightGained = function() {
-    if ($scope.currentUser) {
-      return FoodCalculator.weightGained($scope.foodList);
-    }
-    else {
-      return "";
-    }
+    return ($scope.currentUser ? FoodCalculator.weightGained($scope.foodList) : "");
   };
   $scope.currentWeight = function() {
-    if ($scope.currentUser) {
-      return Number($scope.currentUser.weight) + Number($scope.weightGained());
-    }
-    else {
-      return "";
-    }
+    return ($scope.currentUser ? +$scope.currentUser.weight + Number($scope.weightGained()) : "");
   };
 });
