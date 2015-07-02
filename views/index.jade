@@ -6,6 +6,8 @@ block content
     buttn.btn.btn-warning(ng-click="showUser = !showUser") Show User
   .row#new-user-container(ng-show="showUser")
     h3.section-title User
+    select(value="Select user")
+      option(selected="selected") Select a current user
     form(ng-submit="saveUser()")
       .col-sm-6#personal-data
         label.label-spacer Name
