@@ -47,8 +47,9 @@ block content
         input.form-control(placeholder="Calories" ng-model="food.calories" type="number" min="0" required)
         label.label-spacer Servings
         input.form-control(placeholder="Servings" ng-model="food.servings" type="number" min="1" required)
-        button.btn.btn-primary.food-button(type="submit" ng-disabled="!currentUser") Save Food
-        span.disabled-user(ng-hide="currentUser") Create a user first
+        div.btn-container
+          button.btn.btn-primary.food-button(type="submit" ng-disabled="!currentUser") Save Food
+          span.disabled-user(ng-hide="currentUser") Create a user first
     .col-sm-6.stats-container
       h2 Current User: {{currentUser.name || "none"}}
       table.table-striped.stats-table
