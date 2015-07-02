@@ -68,3 +68,4 @@ app.controller("DiaryCtlr", function($scope, $http, FoodCalculator) {
     return ($scope.currentUser && $scope.foodList.length > 0 ? +$scope.currentUser.weight + Number($scope.weightGained()) : "");
   };
 });
+// Set food list to zero on new user
