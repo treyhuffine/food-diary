@@ -38,12 +38,8 @@ router.post("/food", function(req, res) {
       res.status(400);
       return;
     }
-    fbRef.child(req.body.uid).child("food").limitToLast(1).on("child_added", function(snapshot) {
-      var newFood = snapshot.val();
-      newFood.foodId = snapshot.key();
-      res.json(newFood);
-    });
   });
+  res.status(200).json({resp: "Food added"});
 });
 router.delete("/food/:user/:food", function(req, res) {
   fbRef.child(req.params.user).child(req.params.food).remove(function(err) {

@@ -50,10 +50,9 @@ app.controller("DiaryCtlr", function($scope, $http, FoodCalculator) {
     $scope.food.date = new Date();
     $http.post("/food", $scope.food)
       .success(function(data) {
-        if (data) {
-          $scope.foodList.push(data);
+          console.log($scope.food);
+          $scope.foodList.push($scope.food);
           $scope.food = {};
-        }
       })
       .catch(function(err) {
         console.log(err);
