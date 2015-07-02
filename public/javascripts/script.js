@@ -53,7 +53,7 @@ app.controller("DiaryCtlr", function($scope, $http, FoodCalculator) {
           $scope.foodList.push(data);
         }
       })
-      .catch(function(data) {
+      .catch(function(err) {
         console.log(err);
       });
   };

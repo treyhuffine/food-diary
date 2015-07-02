@@ -6,9 +6,6 @@ body {
 a {
   color: #00B7FF;
 }
-/* .stats-container {
-  margin-right: 60px;
-} */
 .diary-tag {
   text-align: center
 }
@@ -57,6 +54,7 @@ a {
 .food-item td {
   padding-top: 5px;
   padding-bottom: 5px;
+  vertical-align: middle;
 }
 .food-list {
   margin-top: 7px;
@@ -77,4 +75,7 @@ a {
   color: rgb(80, 162, 98);
   margin-left: 10px;
   display: inline-block;
+}
+.fooditem {
+  margin-bottom: 0;
 }

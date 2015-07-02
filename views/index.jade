@@ -87,17 +87,17 @@ block content
               td
                 button.btn.btn-danger.btn-xs(ng-click="deleteFood($index)") Delete
               td
-                p(ng-hide="food.editing") {{food.description}}
+                p.fooditem(ng-hide="food.editing") {{food.description}}
                 input(ng-model="food.description" ng-show="food.editing")
               td
-                p(ng-hide="food.editing") {{food.meal}}
+                p.fooditem(ng-hide="food.editing") {{food.meal}}
                 input(ng-model="food.meal" ng-show="food.editing")
               td
-                p(ng-hide="food.editing") {{food.calories}}
+                p.fooditem(ng-hide="food.editing") {{food.calories}}
                 input(ng-model="food.calories" ng-show="food.editing")
               td
-                p(ng-hide="food.editing") {{food.servings}}
+                p.fooditem(ng-hide="food.editing") {{food.servings}}
                 input(ng-model="food.servings" ng-show="food.editing")
               td
-                p(ng-hide="food.editing") {{food.date | date : 'mediumDate' }}
+                p.fooditem(ng-hide="food.editing") {{food.date | date : 'mediumDate' }}
                 input(ng-model="food.description" ng-show="food.editing")
