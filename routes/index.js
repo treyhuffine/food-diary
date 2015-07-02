@@ -27,9 +27,9 @@ router.get('/users', function(req, res) {
   });
 });
 router.get("/food", function(req, res) {
-  console.log(req);
-  console.log(req.body);
-  res.status(200).json({message: "API successfully hit"});
+  fbRef.child(req.body.uid).("food").once("value", function(snapshot) {
+    res.json(snapshot.val();)
+  });
 });
 router.post("/food", function(req, res) {
   console.log(req.body);
