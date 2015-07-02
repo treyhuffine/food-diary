@@ -11,6 +11,8 @@ app.controller("DiaryCtlr", function($scope, $http, FoodCalculator) {
       .success(function(data, status, headers, config) {
         $scope.currentUser = data;
         $scope.userList.push($scope.currentUser);
+      })
+      .then(function() {
         $scope.getFood();
       })
       .catch(function(err) {
@@ -20,9 +22,7 @@ app.controller("DiaryCtlr", function($scope, $http, FoodCalculator) {
   $scope.getFood = function() {
     $http.get("/food", $scope.currentUser)
       .success(function(data) {
-        if ($scope.food) {
-          $scope.foodList.push($scope.food);
-        }
+        $scope.foodList.push(data);
       })
       .catch(function(error) {
         console.log(error);

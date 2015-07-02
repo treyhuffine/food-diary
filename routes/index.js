@@ -27,6 +27,7 @@ router.get('/users', function(req, res) {
   });
 });
 router.get("/food", function(req, res) {
+  console.log(req);
   console.log(req.body);
   res.status(200).json({message: "API successfully hit"});
 });
