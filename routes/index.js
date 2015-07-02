@@ -27,8 +27,8 @@ router.get('/users', function(req, res) {
   });
 });
 router.get("/food", function(req, res) {
-  fbRef.child(req.body.uid).("food").once("value", function(snapshot) {
-    res.json(snapshot.val();)
+  fbRef.child(req.body.uid).child("food").once("value", function(snapshot) {
+    res.json(snapshot.val());
   });
 });
 router.post("/food", function(req, res) {
