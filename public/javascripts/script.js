@@ -14,7 +14,7 @@ app.controller("DiaryCtlr", function($scope, $http, FoodCalculator) {
         $scope.userList.push($scope.user);
       })
       .catch(function(err) {
-        console.log(error);
+        console.log(err);
       });
   };
   $scope.addFood = function() {

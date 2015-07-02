@@ -12,9 +12,11 @@ router.post('/users', function(req, res) {
     if (err) {
       res.status(400);
     }
-    else {
-      res.json(req.body);
-    }
+  });
+  fbRef.limitToLast(1).on("child_added", function(snapshot) {
+    var newUser = snapshot.val();
+    newUser.uid = snapshot.key();
+    res.json(newUser);
   });
 });
 router.get('/users', function(req, res) {
