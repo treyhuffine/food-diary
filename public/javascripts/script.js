@@ -9,6 +9,7 @@ app.controller("DiaryCtlr", function($scope, $http, FoodCalculator) {
   $scope.saveUser = function() {
     $http.post("/users", $scope.user)
       .success(function(data, status, headers, config) {
+        console.log(data);
         $scope.currentUser = $scope.user;
         $scope.userList.push($scope.user);
       })

@@ -13,8 +13,15 @@ router.post('/users', function(req, res) {
       res.status(400);
     }
     else {
-      res.json(res.body);
+      res.json(req.body);
     }
+  });
+});
+router.get('/users', function(req, res) {
+  fbRef.once("value", function(snapshot) {
+    res.json(snapshot.val());
+  }, function(err) {
+    res.json(error);
   });
 });
 router.get("/food", function(req, res) {
