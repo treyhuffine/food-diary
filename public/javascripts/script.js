@@ -1,6 +1,6 @@
 var app = angular.module("foodDiary", []);
 
-app.controller("DiaryCtlr", function($scope, $http) {
+app.controller("DiaryCtlr", function($scope, $http, FoodCalculator) {
   $scope.userList = [];
   $scope.foodList =[];
   $scope.user = {};
@@ -52,8 +52,7 @@ app.controller("DiaryCtlr", function($scope, $http) {
   };
   $scope.calcBMI = function() {
     if ($scope.currentUser) {
-      var BMI = Number($scope.currentUser.weight) * 703 / (Number($scope.currentUser.height) * Number($scope.currentUser.height));
-      return BMI;
+      return FoodCalculator.calcBMI($scope.currentUser);
     }
     else {
       return "";
@@ -61,18 +60,11 @@ app.controller("DiaryCtlr", function($scope, $http) {
   };
   $scope.weightGained = function() {
     if ($scope.currentUser) {
-      var weightGain = $scope.caloriesToWeight() / calsPerPound;
-      return weightGain;
+      return FoodCalculator.weightGained($scope.foodList);
     }
     else {
       return "";
     }
-  };
-  $scope.caloriesToWeight = function() {
-    var totalCals = $scope.foodList.reduce(function(prev, curr) {
-      return Number(prev) + Number(curr.calories) * Number(curr.servings);
-    }, 0);
-    return totalCals;
   };
   $scope.currentWeight = function() {
     if ($scope.currentUser) {
