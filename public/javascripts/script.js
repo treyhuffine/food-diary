@@ -2,14 +2,13 @@ var app = angular.module("foodDiary", []);
 
 app.controller("DiaryCtlr", function($scope, $http, FoodCalculator) {
   $scope.userList = [];
-  $scope.foodList =[];
+  $scope.foodList = [];
   $scope.user = {};
   var calsPerPound = 3500;
 
   $scope.saveUser = function() {
     $http.post("/users", $scope.user)
       .success(function(data, status, headers, config) {
-        console.log(data);
         $scope.currentUser = data;
         $scope.userList.push($scope.currentUser);
         $scope.getFood();
@@ -21,11 +20,9 @@ app.controller("DiaryCtlr", function($scope, $http, FoodCalculator) {
   $scope.getFood = function() {
     $http.get("/food", $scope.currentUser)
       .success(function(data) {
-        console.log(data);
-        $scope.food.date = new Date();
-        $scope.food.editing = false;
-        $scope.foodList.push($scope.food);
-        $scope.food = {};
+        if ($scope.food) {
+          $scope.foodList.push($scope.food);
+        }
       })
       .catch(function(error) {
         console.log(error);
@@ -65,9 +62,9 @@ app.controller("DiaryCtlr", function($scope, $http, FoodCalculator) {
     return ($scope.currentUser ? FoodCalculator.calcBMI($scope.currentUser) : "");
   };
   $scope.weightGained = function() {
-    return ($scope.currentUser ? FoodCalculator.weightGained($scope.foodList) : "");
+    return ($scope.currentUser && $scope.foodList.length > 0 ? FoodCalculator.weightGained($scope.foodList) : "");
   };
   $scope.currentWeight = function() {
-    return ($scope.currentUser ? +$scope.currentUser.weight + Number($scope.weightGained()) : "");
+    return ($scope.currentUser && $scope.foodList.length > 0 ? +$scope.currentUser.weight + Number($scope.weightGained()) : "");
   };
 });
