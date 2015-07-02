@@ -11,16 +11,16 @@ block content
         label.label-spacer Name
         input.form-control(placeholder="Name" ng-model="user.name" required)
         label.label-spacer Age
-        input.form-control(placeholder="Age" ng-model="user.age" type="number" required)
+        input.form-control(placeholder="Age" ng-model="user.age" min="1" type="number" required)
         label.label-spacer Gender
         select.form-control(ng-model="user.gender" required)
           option Male
           option Female
       .col-sm-6#user-measurables
         label.label-spacer Weight
-        input.form-control(placeholder="Weight in Pounds" ng-model="user.weight" type="number" required)
+        input.form-control(placeholder="Weight in Pounds" ng-model="user.weight" min="0" type="number" required)
         label.label-spacer Height
-        input.form-control(placeholder="Height in Inches" ng-model="user.height" type="number" required)
+        input.form-control(placeholder="Height in Inches" ng-model="user.height" min="0" type="number" required)
         label.label-spacer Unit
         select.form-control(ng-model="user.unit" required)
           option in
